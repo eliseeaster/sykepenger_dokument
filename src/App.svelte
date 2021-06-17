@@ -19,7 +19,7 @@
 	}
 
 	h1 {
-		color: blue;
+		color: red;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
