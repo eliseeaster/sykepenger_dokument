@@ -9,9 +9,10 @@
 	let age;
 	let gender = 0;
 
-	export let showForm = false;
+	export let showForm;
 
 	const addPatient = () => {
+        showForm = !showForm
 		let g = "Male";
 		{if (gender==1) {
 			g = "Female";
@@ -20,8 +21,9 @@
 		let newPatient = {Name: patientName, Age: age, Gender: g, id: patients.length};
 		patients[patients.length] = newPatient; 
 		console.log(newPatient);
-		showForm = false;
 		resetFields();
+        
+        console.log(showForm)
 	}
 
 	const resetFields = () => {
