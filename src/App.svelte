@@ -2,7 +2,6 @@
 
 <script>
 
- import { dataset_dev, text } from "svelte/internal";
 import Modal from './Modal.svelte'
 let showModal = true;
 
@@ -21,7 +20,6 @@ const toggleModal = () => {
 	let patientName;
 	let age;
 	let gender = 0;
-
 
 	let showForm = false;
 
