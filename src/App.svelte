@@ -1,5 +1,14 @@
+
+
 <script>
-import { dataset_dev, text } from "svelte/internal";
+
+ import { dataset_dev, text } from "svelte/internal";
+import Modal from './Modal.svelte'
+let showModal = true;
+
+const toggleModal = () => {
+	showModal = !showModal;
+}
 
 	export let name;
 	let dips_bilde = "dips.png"
@@ -41,8 +50,10 @@ import { dataset_dev, text } from "svelte/internal";
 
 </script>
 
-
+<Modal header="Information" message="Here is some information" isInfo={true} {showModal} on:click={toggleModal}/>
 <main>
+	<button on:click={toggleModal}>Open modal</button>
+
 	<img src="favicon.png" alt="svelte logo"/>
 	<img src={dips_bilde} alt="dipsbilde"/>
 	<h1>Hello {name}!</h1>
@@ -74,11 +85,11 @@ import { dataset_dev, text } from "svelte/internal";
 		
 	{/if}
 	
-	
 </main>
 
 <style>
-	main {
+
+	main{
 		text-align: center;
 		padding: 1em;
 		max-width: 240px;
@@ -97,4 +108,5 @@ import { dataset_dev, text } from "svelte/internal";
 			max-width: none;
 		}
 	}
+
 </style>
