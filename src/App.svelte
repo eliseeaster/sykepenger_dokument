@@ -12,8 +12,9 @@ const toggleModal = () => {
 }
 
 // Form
-const ToggleForm = () => {
+export const ToggleForm = () => {
 		showForm = !showForm;
+		console.log(showForm)
 	}
 
 </script>
@@ -22,7 +23,7 @@ const ToggleForm = () => {
 <main>
 	<button on:click={toggleModal}>Open modal</button>
 	<button on:click={ToggleForm}>Add new patient</button>
-	<AddPatientForm {showForm}/>
+	<AddPatientForm {showForm} on:click={ToggleForm}/>
 
 
 </main>
