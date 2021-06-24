@@ -1,41 +1,46 @@
 <script>
-
 	export let patientName;
 	export let patientId;
-	let code;
-	let comment;
+	export let readonly;
 
 	const saveDocument = () => {
-		let document = {Name: patientName, PatientId: patientId, Comment: comment};
-		let documentString = JSON.stringify(document)
-		console.log(documentString);
-		//window.chrome.webview.postMessage()
-		window.chrome.webview.postMessage(documentString);
-	}
+		alert("trying to save")
+	};
 
 	const approveDocument = () => {
-		let document = {Name: patientName, PatientId: patientId, Comment: comment};
-		let documentString = JSON.stringify(document)
-		console.log("Approved:" + documentString);
-	}
-
+		alert("trying to approve")
+	};
 </script>
 
 <main>
-	
-		<!-- <form on:submit|preventDefault={addPatient}> -->
-			<!-- <input type= "number" placeholder="Sykemelding kode" bind:value={code} required/> -->
+	<div class:hide={readonly}>
+		<label>Navn</label>
+		<input disabled value={patientName} id="name" />
+		<label>Personnummer</label>
+		<input disabled value={patientId} id="patientId" />
 
-				<input type= "text" placeholder="Kommentar" bind:value={comment} required/>
-
-				<button name="saveButton" type="submit" on:click={saveDocument}>Lagre</button>
-				<button name="approveButton" type="submit" on:click={approveDocument}>Godkjenn</button>
-
-			
-		<!-- </form> -->
-	
+		<input type="text" placeholder="Kommentar" id="commentBox"/>
+		<button
+			name="saveButton"
+			type="submit"
+			on:click={saveDocument}
+			id="button1">Lagre</button
+		>
+		<button name="approveButton" type="submit" on:click={approveDocument}
+			>Godkjenn</button
+		>
+	</div>
 </main>
 
 <style>
-    
+	main {
+		text-align: center;
+		padding: 1em;
+		max-width: 240px;
+		margin: 0 auto;
+	}
+
+	.hide button {
+		display: none;
+	}
 </style>
