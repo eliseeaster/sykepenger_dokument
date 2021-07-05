@@ -6,6 +6,7 @@ import AddPatientForm from './AddPatientForm.svelte'
 let showModal = false;
 let patientName;
 let patientId;
+let comment;
 let readonly;
 
 // Modal

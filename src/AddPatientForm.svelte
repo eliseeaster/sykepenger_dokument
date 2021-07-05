@@ -1,15 +1,22 @@
 <script>
 	export let patientName;
 	export let patientId;
+	export let comment = "";
 	export let readonly;
+	export let dirtyDocument = false;
 
 	const saveDocument = () => {
-		alert("trying to save")
+		dirtyDocument = false;
 	};
 
 	const approveDocument = () => {
-		alert("trying to approve")
+		dirtyDocument = false;
 	};
+
+	const keyPress = () => {
+		dirtyDocument = true;
+	}
+
 </script>
 
 <main>
@@ -19,14 +26,15 @@
 		<label>Personnummer</label>
 		<input disabled value={patientId} id="patientId" />
 
-		<input type="text" placeholder="Kommentar" id="commentBox"/>
+		<input type="text" placeholder="Kommentar" id="commentBox" value="{comment}" on:input={keyPress}/>
 		<button
+			class:inactive={!dirtyDocument}
 			name="saveButton"
 			type="submit"
 			on:click={saveDocument}
 			id="button1">Lagre</button
 		>
-		<button name="approveButton" type="submit" on:click={approveDocument}
+		<button name="approveButton" type="submit" on:click={approveDocument} class:inactive={!dirtyDocument}
 			>Godkjenn</button
 		>
 	</div>
@@ -42,5 +50,9 @@
 
 	.hide button {
 		display: none;
+	}
+
+	.inactive {
+		opacity: 0.5;
 	}
 </style>
