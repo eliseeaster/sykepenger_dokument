@@ -14,7 +14,14 @@
 	};
 
 	const keyPress = () => {
+
 		dirtyDocument = true;
+		//window.chrome.webview.postMessage("DocumentStatus:true");
+		CefSharp.PostMessage("DocumentStatus:dirty");		
+	}
+
+	const emptyDocument = () => {		
+		CefSharp.PostMessage("DocumentStatus:empty");		
 	}
 
 </script>
@@ -26,17 +33,14 @@
 		<label>Personnummer</label>
 		<input disabled value={patientId} id="patientId" />
 
-		<input type="text" placeholder="Kommentar" id="commentBox" value="{comment}" on:input={keyPress}/>
+		<input type="text" placeholder="Kommentar" id="commentBox" value="{comment}" on:input={keyPress} on: on:emptied="{emptyDocument}"/>
 		<button
 			class:inactive={!dirtyDocument}
 			name="saveButton"
 			type="submit"
 			on:click={saveDocument}
-			id="button1">Lagre</button
-		>
-		<button name="approveButton" type="submit" on:click={approveDocument} class:inactive={!dirtyDocument}
-			>Godkjenn</button
-		>
+			id="button1">Lagre</button>
+		<button name="approveButton" type="submit" on:click={approveDocument} class:inactive={!dirtyDocument}>Godkjenn</button>
 	</div>
 </main>
 
