@@ -11,13 +11,15 @@
 
 	const approveDocument = () => {
 		dirtyDocument = false;
+		javaScriptProxy.changeDocumentStatus();	
 	};
 
 	const keyPress = () => {
 
 		dirtyDocument = true;
 		//window.chrome.webview.postMessage("DocumentStatus:true");
-		CefSharp.PostMessage("DocumentStatus:dirty");		
+		//CefSharp.PostMessage("DocumentStatus:dirty");	
+		
 	}
 
 	const emptyDocument = () => {		
