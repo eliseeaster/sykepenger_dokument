@@ -1,6 +1,7 @@
 <script>
 	export let patientName;
 	export let patientId;
+	export let address;
 	export let comment = "";
 	export let readonly;
 	export let dirtyDocument = false;
@@ -11,15 +12,16 @@
 
 	const approveDocument = () => {
 		dirtyDocument = false;
-		javaScriptProxy.changeDocumentStatus();	
+		
 	};
 
 	const keyPress = () => {
-
-		dirtyDocument = true;
+		if (!dirtyDocument) {
+			dirtyDocument = true;
+			webAppProxy.updateDocumentStatus();	
+		}
 		//window.chrome.webview.postMessage("DocumentStatus:true");
-		//CefSharp.PostMessage("DocumentStatus:dirty");	
-		
+		//CefSharp.PostMessage("DocumentStatus:dirty");		
 	}
 
 	const emptyDocument = () => {		
@@ -35,7 +37,7 @@
 		<label>Personnummer</label>
 		<input disabled value={patientId} id="patientId" />
 
-		<input type="text" placeholder="Kommentar" id="commentBox" value="{comment}" on:input={keyPress} on: on:emptied="{emptyDocument}"/>
+		<input type="text" placeholder="Kommentar" id="commentBox" bind:value={address} on:input={keyPress} on: on:emptied="{emptyDocument}"/>
 		<button
 			class:inactive={!dirtyDocument}
 			name="saveButton"

@@ -1,5 +1,6 @@
 {
     "resourceType": "Patient",
+    "id": "3458",
     "meta": {
       "security": [
         {
@@ -46,6 +47,15 @@
     "gender": "female",
     "birthDate": "1980-03-28",
     "deceasedBoolean": false,
+    "address": [
+      {
+        "line": [
+            "boligveien"
+        ],
+        "city": "Oslo",
+        "postalCode": "0000"
+      }
+    ],
     "maritalStatus": {
       "coding": [
         {
